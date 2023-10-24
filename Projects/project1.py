@@ -226,6 +226,9 @@ def run():
 
     elif user_input.startswith('> ') and len(previous_path) != 0:
         size = int(user_input[2:])
+        if size < 1:
+            print('ERROR')
+            run()
         larger_files = larger_size(show_subdirectory(previous_path[-1]), size)
         print_paths(larger_files)
         narrowed_down_files.append(larger_files)
@@ -233,6 +236,9 @@ def run():
         
     elif user_input.startswith('< ') and len(previous_path) != 0:
         size = int(user_input[2:])
+        if size < 1:
+            print('ERROR')
+            run()
         smaller_files = smaller_size(show_subdirectory(previous_path[-1]), size)
         print_paths(smaller_files)
         narrowed_down_files.append(smaller_files)
